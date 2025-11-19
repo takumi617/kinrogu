@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   def index
+     @reviews = Review.all
   end
   
   def new
@@ -8,8 +9,10 @@ class ReviewsController < ApplicationController
   
   def create
      
-  bookmark = Review.new(title: params[:review][:storename], url: params[:review][:location])
-  bookmark.save
+  review = Review.new(storename: params[:review][:storename], location: params[:review][:location], comment: params[:review][:comment],
+    category: params[:review][:category],
+    star: params[:review][:star])
+  review.save
   redirect_to '/' #=>一覧ページにリダイレクトする
 end
 end
