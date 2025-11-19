@@ -7,15 +7,13 @@ class TopController < ApplicationController
     user = User.find_by(uid: params[:uid])
     if user and user.authenticate(params[:pass])
       session[:login_uid] = params[:uid]
-      ##redirect_to tweets_path
-      redirect_to users_path
+      redirect_to root_path
     end
   end
   
   def logout
     session.delete(:login_uid)
-    ##redirect_to tweets_path
-    redirect_to users_path
+    redirect_to root_path
   end
   
 end
