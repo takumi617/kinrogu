@@ -1,5 +1,20 @@
 Rails.application.routes.draw do
+
   get "reviews/index"
+  # ユーザー登録 (UsersController)
+  resources :users, only: [:index, :new, :create, :destroy]
+
+  # ログイン・ログアウト (TopController)
+  get 'top/main', to: 'top#main'
+  post 'top/login', to: 'top#login'
+  get 'top/logout', to: 'top#logout'
+
+  # トップページをログイン画面にする場合
+  
+  
+  # ※ 既存の restaurants などの設定はそのまま残してください
+  resources :restaurants
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get 'reviews/new', to: 'reviews#new'
   root "reviews#index"
