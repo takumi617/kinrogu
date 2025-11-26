@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
+  get "top/main"
+  post "top/login"
+  get "top/logout"
+  
+  resources :users
+#  root "users#index"
+
+
+  get "reviews/index"
 
   get "reviews/index"
   # ユーザー登録 (UsersController)
@@ -13,7 +23,87 @@ Rails.application.routes.draw do
   
   
   # ※ 既存の restaurants などの設定はそのまま残してください
+
+Rails.application.routes.draw do
+<<<<<<< HEAD
+  get "top/main"
+  post "top/login"
+  get "top/logout"
+  
+  resources :users
+#  root "users#index"
+
+
+  get "reviews/index"
+
+  get "reviews/index"
+  # ユーザー登録 (UsersController)
+  resources :users, only: [:index, :new, :create, :destroy]
+
+  # ログイン・ログアウト (TopController)
+  get 'top/main', to: 'top#main'
+  post 'top/login', to: 'top#login'
+  get 'top/logout', to: 'top#logout'
+
+  # トップページをログイン画面にする場合
+  
+  
+  # ※ 既存の restaurants などの設定はそのまま残してください
+
+Rails.application.routes.draw do
+<<<<<<< HEAD
+  get "top/main"
+  post "top/login"
+  get "top/logout"
+  
+  resources :users
+#  root "users#index"
+
+
+  get "reviews/index"
+
+  get "reviews/index"
+  # ユーザー登録 (UsersController)
+  resources :users, only: [:index, :new, :create, :destroy]
+
+  # ログイン・ログアウト (TopController)
+  get 'top/main', to: 'top#main'
+  post 'top/login', to: 'top#login'
+  get 'top/logout', to: 'top#logout'
+
+  # トップページをログイン画面にする場合
+  
+  
+  # ※ 既存の restaurants などの設定はそのまま残してください
+
+Rails.application.routes.draw do
+<<<<<<< HEAD
+  get "top/main"
+  post "top/login"
+  get "top/logout"
+  
+  resources :users
+#  root "users#index"
+
+
+  get "reviews/index"
+
+  get "reviews/index"
+  # ユーザー登録 (UsersController)
+  resources :users, only: [:index, :new, :create, :destroy]
+
+  # ログイン・ログアウト (TopController)
+  get 'top/main', to: 'top#main'
+  post 'top/login', to: 'top#login'
+  get 'top/logout', to: 'top#logout'
+
+  # トップページをログイン画面にする場合
+  
+  
+  # ※ 既存の restaurants などの設定はそのまま残してください
+<<<<<<< HEAD
   #resources :restaurants
+  resources :restaurants
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get 'reviews/new', to: 'reviews#new'
