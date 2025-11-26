@@ -1,8 +1,10 @@
+
 <html lang="ja">
 <body>
 <div class="test-container">
 <h2>外食レビュー投稿（大学生向け）</h2>
 <form action="/reviews" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <p>
     <label for="storename">お店の名前</label>：
     <input type="text" name="review[storename]" id="storename" />
@@ -29,11 +31,11 @@
   <label for="star">5段階評価</label>:
    <select name="review[star]" id="star" required>
     <option value="">選択してください</option>
-      <option value="1">1</option></option>
+      <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
       <option value="4">4</option>
-      <option value="5a">5</option>
+      <option value="5">5</option>
     </label>
 
 <br></br>
