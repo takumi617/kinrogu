@@ -8,21 +8,42 @@ class UsersController < ApplicationController
   end
   
   def create
-    ##u = 
-    User.create(uid: params[:user][:uid],
-      password: params[:user][:password], 
-      password_confirmation: params[:user][:password_confirmation])
-    ##p = Profile.new(message:"")
-    ##p.user = u
-    ##p.save
-    redirect_to users_path
+    # パスワードのハッシュ化は has_secure_password が自動で行います
+    @user = User.new(
+      uid: params[:user][:uid],
+      password: params[:user][:password],
+      password_confirmation: params[:user][:password_confirmation]
+    )
+    
+    if @user.save
+      redirect_to root_path, notice: 'ユーザー登録が完了しました'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
     u = User.find(params[:id])
     u.destroy
+    redirect_to users_path, notice: 'ユーザーを削除しました'
+  end
+  
+  ##def create
+    ##u = 
+    ##User.create(uid: params[:user][:uid],
+      ##password: params[:user][:password], 
+      ##password_confirmation: params[:user][:password_confirmation])
+    ##p = Profile.new(message:"")
+    ##p.user = u
+    ##p.save
+    ##redirect_to users_path
+  ##end
+
+  ##def destroy
+    ##u = User.find(params[:id])
+    ##u.destroy
     ##p = Profile.find_by(user_id: u.id)
     ##p.destroy
-    redirect_to users_path
-  end
+    ##redirect_to users_path
+  ##end
 end
