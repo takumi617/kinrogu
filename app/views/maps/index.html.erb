@@ -1,0 +1,39 @@
+<h1>お店マップ</h1>
+<div id="map"></div>
+
+<style>
+  #map {
+    height: 400px;
+    width: 100%;
+  }
+</style>
+
+<script>
+let map;
+let geocoder;
+let marker;
+
+function initMap() {
+  geocoder = new google.maps.Geocoder();
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 33.64499937514977, lng: 130.7135560801933 },
+    zoom: 12,
+  });
+
+  marker = new google.maps.Marker({
+    position: {lat: 33.64499937514977, lng: 130.7135560801933},
+    map: map
+  });
+    const infowindow = new google.maps.InfoWindow({
+    content: "<b>ここに文字表示</b>"
+  });
+
+  
+  infowindow.open(map, marker);
+  
+  
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDm8-NU6BEgUIUIXcfxKyjYHyjOb89c4gA&callback=initMap" async defer></script>
+
