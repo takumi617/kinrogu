@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  get "reviews/index"
   # ユーザー登録 (UsersController)
   resources :users, only: [:index, :new, :create, :destroy]
 
@@ -8,13 +10,15 @@ Rails.application.routes.draw do
   get 'top/logout', to: 'top#logout'
 
   # トップページをログイン画面にする場合
-  root "top#main" 
+  
   
   # ※ 既存の restaurants などの設定はそのまま残してください
   resources :restaurants
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
+  get 'reviews/new', to: 'reviews#new'
+  root "reviews#index"
+  post 'reviews', to: 'reviews#create'
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
