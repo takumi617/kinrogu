@@ -41,6 +41,7 @@
 let map;
 let geocoder;
 let marker;
+const jusyo =" 福岡県北九州市小倉南区富士見一丁目9番1号 "
 
 
 
@@ -66,11 +67,29 @@ function initMap() {
       },
     ]
   });
+  
+    geocoder.geocode({ address: jusyo }, (results, status) => {
+    if (status === "OK" && results[0]) {
+      const location = results[0].geometry.location;
+      marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title: jusyo
+      });
+      map.setCenter(location);
+      console.log("緯度:", location.lat(), "経度:", location.lng());
+    } else {
+      console.error("ジオコーディングに失敗しました:", status);
+    }
+  });
+
 
   marker = new google.maps.Marker({
     position: {lat: 33.64499937514977, lng: 130.7135560801933},
     map: map
   });
+  
+  
   
   
   
@@ -85,6 +104,8 @@ function moveCenter2() {
 function moveCenter3(){
   map.setCenter({lat: 33.64499937514977, lng: 130.7135560801933});
 }
+
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDm8-NU6BEgUIUIXcfxKyjYHyjOb89c4gA&callback=initMap" async defer></script>
 
