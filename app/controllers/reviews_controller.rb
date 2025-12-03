@@ -15,10 +15,5 @@ class ReviewsController < ApplicationController
   review.save
   redirect_to '/' #=>一覧ページにリダイレクトする
   end
-  
-  private
 
-  def review_params
-    params.require(:review).permit(:storename, :location, :comment, :category, :star, :image)
-  end
 end
