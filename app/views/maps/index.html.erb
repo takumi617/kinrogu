@@ -1,17 +1,49 @@
-<h1>お店マップ</h1>
-<div id="map"></div>
-
 <style>
+.button {
+      /*コレ*/border-radius: 100px;
+    display: block;
+    width: 200px;
+    padding: 15px;
+    box-sizing: border-box;
+    background: #6fa1ff;
+    color: #FFF;
+    text-decoration: none;
+    text-align: center;
+    margin: 10px 0;
+    white-space: nowrap;
+}
+.button-container {
+  display: flex;        /* 子要素を横並びにする */
+  gap: 10px;            /* ボタン間の間隔 */
+}
   #map {
     height: 400px;
     width: 100%;
   }
 </style>
 
+
+
+
+
+
+<h1>お店マップ</h1>
+<div class="button-container">
+<button onclick="moveCenter1()"class="button">北九州市</button>
+<button onclick="moveCenter2()"class="button">福岡市</button>
+<button onclick="moveCenter3()"class="button">飯塚市</button>
+</div>
+<div id="map">
+
+
+
 <script>
 let map;
 let geocoder;
 let marker;
+
+
+
 
 function initMap() {
   geocoder = new google.maps.Geocoder();
@@ -19,20 +51,39 @@ function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 33.64499937514977, lng: 130.7135560801933 },
     zoom: 12,
+    styles: [
+　　　 {
+        featureType: "poi",
+        stylers: [{ visibility: "off" }]
+      },
+      {
+        featureType: "poi.business",
+        stylers: [{ visibility: "off" }]
+      },
+      {
+        featureType: "poi.park",
+        stylers: [{ visibility: "off" }]
+      },
+    ]
   });
 
   marker = new google.maps.Marker({
     position: {lat: 33.64499937514977, lng: 130.7135560801933},
     map: map
   });
-    const infowindow = new google.maps.InfoWindow({
-    content: "<b>ここに文字表示</b>"
-  });
+  
+  
+  
+}
 
-  
-  infowindow.open(map, marker);
-  
-  
+function moveCenter1() {
+  map.setCenter({ lat: 33.8869, lng: 130.8828 }); // 小倉駅
+}
+function moveCenter2() {
+  map.setCenter({ lat: 33.589825611450586, lng: 130.42086936230928 }); // 小倉駅
+}
+function moveCenter3(){
+  map.setCenter({lat: 33.64499937514977, lng: 130.7135560801933});
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDm8-NU6BEgUIUIXcfxKyjYHyjOb89c4gA&callback=initMap" async defer></script>
