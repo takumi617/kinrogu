@@ -11,8 +11,15 @@ class ReviewsController < ApplicationController
      
   review = Review.new(storename: params[:review][:storename], location: params[:review][:location], comment: params[:review][:comment],
     category: params[:review][:category],
-    star: params[:review][:star])
+    star: params[:review][:star],image: params[:review][:image])
   review.save
   redirect_to '/' #=>一覧ページにリダイレクトする
-end
+  end
+  
+  private
+
+  def review_params
+    # :image を忘れずに追加し、最後に end を閉じる
+    params.require(:review).permit(:storename, :location, :comment, :category, :star, :image)
+  end
 end
