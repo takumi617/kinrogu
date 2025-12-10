@@ -1,4 +1,4 @@
-<%= link_to '新規追加', 'reviews/new',style: "background-color: #007bff; color: white; padding: 8px 12px; border-radius: 4px; text-decoration: none;" %></p>
+<%= link_to '新規追加', new_review_path, style: "background-color: #007bff; color: white; padding: 8px 12px; border-radius: 4px; text-decoration: none;" %></p>
 <% @reviews.each do |r| %>
   <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
     
@@ -15,5 +15,18 @@
       コメント: <%= r.comment %><br>
       ジャンル: <%= r.category %>
     </p>
+  　<div style="margin-top: 10px;">
+      <% if current_user %>
+        <% if current_user.bookmarks.exists?(review_id: r.id) %>
+          
+          <%= button_to "📖 ブックマーク解除", review_bookmark_path(r), method: :delete, style: "background-color: #aaa; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;" %>
+
+        <% else %>
+          
+          <%= button_to "📘 ブックマーク登録", review_bookmark_path(r), method: :post, style: "background-color: #f8c200; color: #333; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;" %>
+          
+        <% end %>
+      <% end %>
+    </div>
   </div>
 <% end %>

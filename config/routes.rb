@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   
   # ※ 既存の restaurants などの設定はそのまま残してくださ
   #resources :restaurants
+  resources :reviews do
+    resource :bookmark, only: [:create, :destroy]
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get 'reviews/new', to: 'reviews#new'

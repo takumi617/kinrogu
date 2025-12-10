@@ -6,6 +6,7 @@ class User < ApplicationRecord
     
     # これまでの関連付けも維持する場合
     has_many :restaurants
-    has_many :reviews
-    has_many :bookmarks
+    has_many :reviews, dependent: :destroy
+    has_many :bookmarks, dependent: :destroy
+    has_many :bookmarked_reviews, through: :bookmarks, source: :review
 end
