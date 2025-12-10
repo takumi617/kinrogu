@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
   review = Review.new(storename: params[:review][:storename], location: params[:review][:location], comment: params[:review][:comment],
     category: params[:review][:category],
     star: params[:review][:star],image: params[:review][:image])
+  review.user = current_user
   review.save
   redirect_to '/' #=>一覧ページにリダイレクトする
   end
