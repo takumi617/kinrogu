@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
     star: params[:review][:star],image: params[:review][:image])
   review.user = current_user
   review.save
-  redirect_to '/' #=>一覧ページにリダイレクトする
+  redirect_to reviews_index_path #=>一覧ページにリダイレクトする
   end
 
 end
