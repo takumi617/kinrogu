@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
+
   # マップ
   get 'maps/index'
   resources :maps, only: [:index]
 
-  # ユーザー関連
+  get "top/main"
+  post "top/login"
+  get "top/logout"
+  
+  resources :users
+  #root "users#index"
+
+  get "reviews/index"
+  
   resources :users, only: [:index, :new, :create, :destroy]
 
   # ログイン・ログアウト
@@ -11,11 +20,19 @@ Rails.application.routes.draw do
   post 'top/login', to: 'top#login'
   get 'top/logout', to: 'top#logout'
 
+
   # レビュー関連
   resources :reviews, only: [:index, :new, :create]
 
+  # トップページをログイン画面にする場合
+  root "top#main" 
+  
+  # ※ 既存の restaurants などの設定はそのまま残してくださ
+  #resources :restaurants
+
+
   # トップページ
-  root "reviews#index"
+ # root "reviews#index"
 
   # ヘルスチェック
   get "up" => "rails/health#show", as: :rails_health_check

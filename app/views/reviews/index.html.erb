@@ -1,6 +1,12 @@
 <%= link_to '新規追加', 'reviews/new',style: "background-color: #007bff; color: white; padding: 8px 12px; border-radius: 4px; text-decoration: none;" %></p>
 <% @reviews.each do |r| %>
   <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+    
+    　<% if r.image.attached? %>
+      　<div style="margin-bottom: 10px;">
+        　<%= image_tag r.image, style: "max-width: 200px; height: auto; border-radius: 4px;" %>
+      　</div>
+    　<% end %>
 
       <% r.star.to_i.times do %>
         ★
