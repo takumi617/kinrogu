@@ -12,9 +12,9 @@ class BookmarksController < ApplicationController
     bookmark = current_user.bookmarks.new(review: @review)
     
     if bookmark.save
-      redirect_to root_path, notice: 'ブックマークしました。'
+      redirect_to reviews_index_path, notice: 'ブックマークしました。'
     else
-      redirect_to root_path, alert: 'ブックマークに失敗しました。'
+      redirect_to reviews_index_path, alert: 'ブックマークに失敗しました。'
     end
   end
 
@@ -23,9 +23,9 @@ class BookmarksController < ApplicationController
     bookmark = current_user.bookmarks.find_by(review: @review)
     
     if bookmark&.destroy
-      redirect_to root_path, notice: 'ブックマークを解除しました。'
+      redirect_to reviews_index_path, notice: 'ブックマークを解除しました。'
     else
-      redirect_to root_path, alert: '解除できませんでした。'
+      redirect_to reviews_index_path, alert: '解除できませんでした。'
     end
   end
 
