@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
      tags: params[:review][:tags] || [])
   review.user = current_user
   review.save
-  redirect_to reviews_index_path #=>一覧ページにリダイレクトする
+   redirect_to reviews_path#=>一覧ページにリダイレクトする
   end
 
 end
