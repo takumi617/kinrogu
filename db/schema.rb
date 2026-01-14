@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<
-ActiveRecord::Schema[8.1].define(version: 2025_12_12_123853) do
-
+ActiveRecord::Schema[8.1].define(version: 2025_12_17_081636) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -51,6 +49,18 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_12_123853) do
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
+  create_table "restaurants", force: :cascade do |t|
+    t.string "address"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.string "name"
+    t.string "region"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_restaurants_on_user_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.string "category"
     t.string "comment"
@@ -79,5 +89,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_12_123853) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookmarks", "reviews"
   add_foreign_key "bookmarks", "users"
+  add_foreign_key "restaurants", "users"
   add_foreign_key "reviews", "users"
 end
