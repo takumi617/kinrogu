@@ -15,7 +15,7 @@
 <aside id="sidebar">
   <h3>メニュー</h3>
   <ul>
-    <li><%= link_to "トップページ", top_main_path%></li>
+    <li><%= link_to "ログイン情報", top_main_path%></li>
     <%# ▼ ログインしている時だけ表示する ▼ %>
     <% if current_user %>
       <li><%= link_to "マイページ", user_path(current_user) %></li>
